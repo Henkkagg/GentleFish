@@ -1,5 +1,5 @@
 sealed class UiState {
-    object Onboarding: UiState()
-    object FileBrowser: UiState()
-    object Analysis: UiState()
+    data class Onboarding(val failureLaunchingStockfish: Boolean = false) : UiState()
+    object FileBrowser : UiState()
+    object Analysis : UiState()
 }

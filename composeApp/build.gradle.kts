@@ -40,6 +40,14 @@ kotlin {
             implementation("org.pushing-pixels:aurora-window:$auroraVersion")
 
             implementation("com.darkrockstudios:mpfilepicker:3.1.0")
+
+            //Ktor for websockets
+            val ktorVersion = "3.1.0"
+            implementation("io.ktor:ktor-server-core:$ktorVersion")
+            implementation("io.ktor:ktor-server-netty:$ktorVersion")
+            implementation("io.ktor:ktor-server-websockets:$ktorVersion")
+
+            implementation("com.github.bhlangonijr:chesslib:1.3.4")
         }
     }
 }

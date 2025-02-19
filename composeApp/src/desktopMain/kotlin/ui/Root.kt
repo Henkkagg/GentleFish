@@ -9,12 +9,14 @@ import viewmodels.RootViewmodel
 @Composable
 fun Root(viewmodel: RootViewmodel = koinViewModel()) {
 
-    when (viewmodel.uiState) {
-        UiState.Onboarding -> Onboarding(onButtonPress = viewmodel.onFileBrowserButtonPress())
+    when (val state = viewmodel.uiState) {
+        is UiState.Onboarding -> Onboarding(
+            showFailure = state.failureLaunchingStockfish,
+            onButtonPress = { viewmodel.onFileBrowserButtonPress() })
 
-        UiState.FileBrowser -> Filebrowser(onFileSelect = viewmodel.onStockfishPathChange())
+        UiState.FileBrowser -> Filebrowser(onFileSelect = { viewmodel.onStockfishPathChange(it) })
 
-        UiState.Analysis -> {}
+        UiState.Analysis -> { Analysis() }
 
     }
 }

@@ -11,19 +11,27 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import org.pushingpixels.aurora.component.model.Command
 import org.pushingpixels.aurora.component.projection.CommandButtonProjection
 import ui.components.LinkText
 import ui.components.SmallHorizontalSpacer
 
 @Composable
-fun Onboarding(onButtonPress: () -> Unit) {
+fun Onboarding(showFailure: Boolean, onButtonPress: () -> Unit) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        if (showFailure) {
+            Text(
+                text = "There was problem loading Stockfish",
+                color = Color.Red
+            )
+            SmallHorizontalSpacer()
+        }
         CommandButtonProjection(
             contentModel = Command(
                 text = "Locate Stockfish Binary",
