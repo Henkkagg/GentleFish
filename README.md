@@ -17,6 +17,8 @@ Gentlefish consists of two parts:
 1. A **JavaScript client** that runs as a bookmarklet in the browser.
 2. A **Kotlin/Ktor backend** that runs Stockfish, processes moves, and handles WebSocket communication.
 
+Modern browsers require all WebSocket connections to be encrypted (WSS) when communicating with an HTTPS website. To simplify setup, a pre-configured JKS dummy certificate is included in the repository, eliminating the need for additional TLS configuration.
+
 ### Program Flow
 1. The JavaScript client reads moves from the Chess.com DOM and sends them to the backend via WebSocket.
 2. The backend parses the moves and generates a FEN string using ChessLib.
